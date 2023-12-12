@@ -9,29 +9,47 @@ public class GeneticAlgorithm {
     final private State idleState;
     final private State completeState;
 
-    public GeneticAlgorithm(){
+    /**
+     * Constructor
+     */
+    public GeneticAlgorithm() {
         this.idleState = new Idle(this);
         this.completeState = new Complete(this);
         this.state = this.idleState;
     }
 
+    /**
+     * @return an instance of IdleState
+     */
     public State getIdleState() {
         return idleState;
     }
 
+    /**
+     * @return an instance of CompleteState
+     */
     public State getCompleteState() {
         return completeState;
     }
 
+    /**
+     * @return current state of the class
+     */
     public State getState() {
         return state;
     }
 
+    /**
+     * @param state the new state for updating
+     */
     public void setState(State state) {
         this.state = state;
     }
 
-    public void nextStep(){
+    /**
+     * call nextStep() method of current state
+     */
+    public void nextStep() {
         state.nextStep();
     }
 }
