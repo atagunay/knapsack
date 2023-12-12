@@ -7,6 +7,6 @@ Abstract Factory design patterns
 * [2. Class Diagram](/systemDesign/classDiagram.md)
 
 ## Code Documentation
-https://atagunay.github.io/knapsack/doc/Main.html
+https://atagunay.github.io/knapsack/doc/index.html
 
 
