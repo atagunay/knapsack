@@ -19,7 +19,7 @@ public class Idle implements State {
     }
 
     /**
-     * idle state to Complete state
+     * idle state to Complete state,
      * run genetic algorithm
      */
     @Override
