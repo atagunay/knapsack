@@ -2,9 +2,11 @@ package state;
 
 
 import genetic.GeneticAlgorithm;
+import genetic.GeneticAlgorithmManager;
 
 public class Idle implements State {
     private final GeneticAlgorithm geneticAlgorithm;
+    private GeneticAlgorithmManager geneticAlgorithmManager;
 
     /**
      * Constructor
@@ -13,6 +15,7 @@ public class Idle implements State {
      */
     public Idle(GeneticAlgorithm geneticAlgorithm) {
         this.geneticAlgorithm = geneticAlgorithm;
+        this.geneticAlgorithmManager = GeneticAlgorithmManager.getInstance();
     }
 
     /**
