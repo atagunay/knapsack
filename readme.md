@@ -8,5 +8,3 @@ Abstract Factory design patterns
 
 ## Code Documentation
 https://atagunay.github.io/knapsack/doc/index.html
-
-
