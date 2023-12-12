@@ -45,7 +45,7 @@ The mutation is an evolutionary operation that randomly mutates an individual.
 ## 6. Reproduction
 Reproduction is a process of passing an individual as-is from one generation to another without any mutation or crossover.
 
-https://user-images.githubusercontent.com/4745789/156825824-8cac7164-f526-47fd-958b-d24eba11c08a.png
+![image](https://user-images.githubusercontent.com/4745789/156825824-8cac7164-f526-47fd-958b-d24eba11c08a.png)
 
 ## 7. Termination Condition
 We can continue to generate generations upon generations in search of the optimal solution, but we cannot go indefinitely, 
