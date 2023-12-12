@@ -12,11 +12,13 @@ public class KSInitialPopulation extends InitialPopulation {
      * @return the created population
      */
     @Override
-    public int[] generateInitialPopulation(int count) {
-        int[] population = new int[count];
+    public int[][] generateInitialPopulation(int count) {
+        int[][] population = new int[count][4];
 
         for (int i = 0; i < count; i++) {
-            population[i] = rand.nextInt(2);
+            for (int j = 0; j < 4; j++) {
+                population[i][j] = rand.nextInt(2);
+            }
         }
 
         return population;

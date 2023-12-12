@@ -4,6 +4,9 @@ public class GeneticAlgorithmManager {
 
     private static GeneticAlgorithmFactory geneticAlgorithmFactory;
     private static InitialPopulation initialPopulation;
+    private static FitnessCalculation fitnessCalculation;
+
+    private static ResultDetection resultDetection;
 
     /**
      * private constructor for singleton implementation
@@ -18,12 +21,21 @@ public class GeneticAlgorithmManager {
     public static GeneticAlgorithmManager getInstance(String factoryKey) {
         geneticAlgorithmFactory = GeneticAlgorithm.factoryHashMap.get(factoryKey);
         initialPopulation = geneticAlgorithmFactory.createInitialPopulation();
+        fitnessCalculation = geneticAlgorithmFactory.createFitnessCalculation();
+        resultDetection = geneticAlgorithmFactory.createResultDetection();
         return GeneticAlgorithmManagerHelper.INSTANCE;
     }
 
     public String runGeneticAlgorithm() {
-        initialPopulation.generateInitialPopulation(4);
-        return "result";
+        int[][] population = null;
+        int[] fitnessOfPopulation = null;
+
+        while (!resultDetection.isFinished()){
+            population = initialPopulation.generateInitialPopulation(6);
+            fitnessOfPopulation = fitnessCalculation.calculateFitness(population);
+        }
+
+        return resultDetection.detectResult(population, fitnessOfPopulation);
     }
 
     /**
