@@ -22,10 +22,10 @@ public class GeneticAlgorithm {
      * @param factoryKey the key for factory selection, eg: "knapsack" calls KSFactory
      */
     public GeneticAlgorithm(String factoryKey) {
+        this.factoryKey = factoryKey;
         this.idleState = new Idle(this);
         this.completeState = new Complete(this);
         this.state = this.idleState;
-        this.factoryKey = factoryKey;
     }
 
     /**

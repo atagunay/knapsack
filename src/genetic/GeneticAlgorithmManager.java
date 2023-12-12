@@ -3,6 +3,7 @@ package genetic;
 public class GeneticAlgorithmManager {
 
     private static GeneticAlgorithmFactory geneticAlgorithmFactory;
+    private static InitialPopulation initialPopulation;
 
     /**
      * private constructor for singleton implementation
@@ -16,10 +17,12 @@ public class GeneticAlgorithmManager {
      */
     public static GeneticAlgorithmManager getInstance(String factoryKey) {
         geneticAlgorithmFactory = GeneticAlgorithm.factoryHashMap.get(factoryKey);
+        initialPopulation = geneticAlgorithmFactory.createInitialPopulation();
         return GeneticAlgorithmManagerHelper.INSTANCE;
     }
 
     public String runGeneticAlgorithm() {
+        initialPopulation.generateInitialPopulation(4);
         return "result";
     }
 
