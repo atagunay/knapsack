@@ -8,22 +8,22 @@ classDiagram
     State <|.. Complete
     GeneticAlgorithm *-- State
     Idle *-- GeneticAlgorithmManager
-    GeneticAlgorithmFactory <|.. KnapsackFactory : implement
-    InitialPopulation <|-- KSInitialPopulation : extend
-    FitnessCalculation <|-- KSFitnessCalculation : extend
-    NextGeneration <|-- KSNextGeneration : extend
-    ResultDetection <|-- KSResultDetection : extend
-    KSInitialPopulation <.. KnapsackFactory : create
-    KSFitnessCalculation <.. KnapsackFactory : create
-    KSResultDetection <.. KnapsackFactory : create
-    KSNextGeneration <.. KnapsackFactory : create
+    GeneticAlgorithmFactory <|.. KnapsackFactory: implement
+    InitialPopulation <|-- KSInitialPopulation: extend
+    FitnessCalculation <|-- KSFitnessCalculation: extend
+    NextGeneration <|-- KSNextGeneration: extend
+    ResultDetection <|-- KSResultDetection: extend
+    KSInitialPopulation <.. KnapsackFactory: create
+    KSFitnessCalculation <.. KnapsackFactory: create
+    KSResultDetection <.. KnapsackFactory: create
+    KSNextGeneration <.. KnapsackFactory: create
     GeneticAlgorithmManager *-- GeneticAlgorithmFactory
-    NextGeneration *-- SelectionBehaviour : has-a
-    NextGeneration *-- CrossoverBehaviour : has-a
-    NextGeneration *-- MutationBehaviour : has-a
-    MutationBehaviour <|.. RandomMutation : implement
-    CrossoverBehaviour <|.. HalfElementCrossover : implement
-    SelectionBehaviour <|.. TournamentSelection : implement
+    NextGeneration *-- SelectionBehaviour: has-a
+    NextGeneration *-- CrossoverBehaviour: has-a
+    NextGeneration *-- MutationBehaviour: has-a
+    MutationBehaviour <|.. RandomMutation: implement
+    CrossoverBehaviour <|.. HalfElementCrossover: implement
+    SelectionBehaviour <|.. TournamentSelection: implement
 
     namespace State Design Pattern {
         class GeneticAlgorithm {
@@ -33,7 +33,6 @@ classDiagram
             <<interface>>
         }
 
-
         class Idle {
         }
 
@@ -42,84 +41,67 @@ classDiagram
     }
 
 %% Use inner class with Bill Pugh Method
-    namespace Singleton Design Pattern{
+    namespace Singleton Design Pattern {
         class GeneticAlgorithmManager {
-
         }
     }
 
-    namespace Abstract Factory Design Pattern{
-        class GeneticAlgorithmFactory{
-
+    namespace Abstract Factory Design Pattern {
+        class GeneticAlgorithmFactory {
         }
 
-        class KnapsackFactory{
-
+        class KnapsackFactory {
         }
 
-        class KSInitialPopulation{
-
+        class KSInitialPopulation {
         }
 
-        class KSFitnessCalculation{
-
+        class KSFitnessCalculation {
         }
 
-        class KSNextGeneration{
-
+        class KSNextGeneration {
         }
 
-        class KSResultDetection{
-
+        class KSResultDetection {
         }
 
-        class ResultDetection{
+        class ResultDetection {
             <<Abstract>>
-
         }
 
-        class InitialPopulation{
+        class InitialPopulation {
             <<Abstract>>
-
         }
 
-        class FitnessCalculation{
+        class FitnessCalculation {
             <<Abstract>>
-
         }
     }
 
     namespace Strategy Design Pattern {
-        class NextGeneration{
+        class NextGeneration {
             <<Abstract>>
-
         }
 
-        class SelectionBehaviour{
+        class SelectionBehaviour {
             <<interface>>
-
         }
 
-        class CrossoverBehaviour{
+        class CrossoverBehaviour {
             <<interface>>
-
         }
 
-        class MutationBehaviour{
+        class MutationBehaviour {
             <<interface>>
-
         }
 
-        class RandomMutation{
-
+        class RandomMutation {
         }
 
-        class HalfElementCrossover{
-
+        class HalfElementCrossover {
         }
 
-        class TournamentSelection{
-
+        class TournamentSelection {
         }
     }
 ```
