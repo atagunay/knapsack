@@ -1,12 +1,13 @@
 package core;
 
 import genetic.GeneticAlgorithmSettings;
-import genetic.ResultDetection;
+
 
 import java.util.List;
 
 /**
  * Pretty print for program outputs
+ *
  * @param <T> T extends List<?>
  */
 public class ResultPresentation<T extends List<?>> {

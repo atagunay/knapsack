@@ -1,11 +1,9 @@
 package knapsack;
 
-import genetic.GeneticAlgorithm;
 import genetic.GeneticAlgorithmSettings;
 import genetic.NextGeneration;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 

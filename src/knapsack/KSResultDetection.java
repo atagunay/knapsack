@@ -3,8 +3,6 @@ package knapsack;
 import core.ResultPresentation;
 import genetic.ResultDetection;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.List;
 
 /**
