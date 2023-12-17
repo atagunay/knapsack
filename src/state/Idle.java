@@ -4,6 +4,9 @@ package state;
 import genetic.GeneticAlgorithm;
 import genetic.GeneticAlgorithmManager;
 
+/**
+ * Idle State (Waiting for start to Genetic Algorithm) implements State
+ */
 public class Idle implements State {
     private final GeneticAlgorithm geneticAlgorithm;
     private final GeneticAlgorithmManager geneticAlgorithmManager;

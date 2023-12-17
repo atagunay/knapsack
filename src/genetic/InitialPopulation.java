@@ -1,5 +1,7 @@
 package genetic;
 
+import java.util.List;
+
 public abstract class InitialPopulation {
-    public abstract int[][] generateInitialPopulation(int count);
+    public abstract <T extends Number> List<List<T>> generateInitialPopulation(int count);
 }

@@ -2,6 +2,9 @@ package state;
 
 import genetic.GeneticAlgorithm;
 
+/**
+ * Complete State (Waiting for start to Genetic Algorithm) implements State
+ */
 public class Complete implements State {
     GeneticAlgorithm geneticAlgorithm;
 

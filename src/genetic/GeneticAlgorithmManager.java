@@ -1,10 +1,17 @@
 package genetic;
 
+import behaviour.HalfElementCrossover;
+import behaviour.RandomMutation;
+import behaviour.TournamentSelection;
+
+import java.util.List;
+
 public class GeneticAlgorithmManager {
 
-    private static GeneticAlgorithmFactory geneticAlgorithmFactory;
     private static InitialPopulation initialPopulation;
     private static FitnessCalculation fitnessCalculation;
+
+    private static NextGeneration nextGeneration;
 
     private static ResultDetection resultDetection;
 
@@ -19,23 +26,32 @@ public class GeneticAlgorithmManager {
      * @return the singleton instance of GeneticAlgorithmManager
      */
     public static GeneticAlgorithmManager getInstance(String factoryKey) {
-        geneticAlgorithmFactory = GeneticAlgorithm.factoryHashMap.get(factoryKey);
+        GeneticAlgorithmFactory geneticAlgorithmFactory = GeneticAlgorithm.factoryHashMap.get(factoryKey);
+
         initialPopulation = geneticAlgorithmFactory.createInitialPopulation();
         fitnessCalculation = geneticAlgorithmFactory.createFitnessCalculation();
         resultDetection = geneticAlgorithmFactory.createResultDetection();
+        nextGeneration = geneticAlgorithmFactory.createNextGeneration();
+
+        nextGeneration.setSelectionBehaviour(new TournamentSelection());
+        nextGeneration.setCrossoverBehaviour(new HalfElementCrossover());
+        nextGeneration.setMutationBehaviour(new RandomMutation());
+
         return GeneticAlgorithmManagerHelper.INSTANCE;
     }
 
     public String runGeneticAlgorithm() {
-        int[][] population = null;
-        int[] fitnessOfPopulation = null;
+        List<List<Integer>> population = null;
+        List<Integer> fitnessOfPopulation = null;
+        List<List<Integer>> nextPopulation = null;
 
         while (!resultDetection.isFinished()){
             population = initialPopulation.generateInitialPopulation(6);
             fitnessOfPopulation = fitnessCalculation.calculateFitness(population);
+            nextPopulation = nextGeneration.generateNextGeneration(population, fitnessOfPopulation);
         }
 
-        return resultDetection.detectResult(population, fitnessOfPopulation);
+        return resultDetection.detectResult(nextPopulation, fitnessOfPopulation);
     }
 
     /**

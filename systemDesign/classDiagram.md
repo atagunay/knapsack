@@ -5,163 +5,121 @@
 ```mermaid
 classDiagram
     State <|.. Idle
-    State <|.. Processing
     State <|.. Complete
     GeneticAlgorithm *-- State
-    Processing *-- GeneticAlgorithmManager
-    GeneticAlgorithmFactory <|.. KnapsackFactory: implement
-    InitialPopulation <|-- KSInitialPopulation: extend
-    FitnessCalculation <|-- KSFitnessCalculation: extend
-    NextGeneration <|-- KSNextGeneration: extend
-    ResultDetection <|-- KSResultDetection: extend
-    KSInitialPopulation <.. KnapsackFactory: create
-    KSFitnessCalculation <.. KnapsackFactory: create
-    KSResultDetection <.. KnapsackFactory: create
-    KSNextGeneration <.. KnapsackFactory: create
+    Idle *-- GeneticAlgorithmManager
+    GeneticAlgorithmFactory <|.. KnapsackFactory : implement
+    InitialPopulation <|-- KSInitialPopulation : extend
+    FitnessCalculation <|-- KSFitnessCalculation : extend
+    NextGeneration <|-- KSNextGeneration : extend
+    ResultDetection <|-- KSResultDetection : extend
+    KSInitialPopulation <.. KnapsackFactory : create
+    KSFitnessCalculation <.. KnapsackFactory : create
+    KSResultDetection <.. KnapsackFactory : create
+    KSNextGeneration <.. KnapsackFactory : create
     GeneticAlgorithmManager *-- GeneticAlgorithmFactory
-    NextGeneration *-- SelectionBehaviour: has-a
-    NextGeneration *-- CrossoverBehaviour: has-a
-    NextGeneration *-- MutationBehaviour: has-a
-    MutationBehaviour <|.. RandomMutation: implement
-    CrossoverBehaviour <|.. HalfElementCrossover: implement
-    SelectionBehaviour <|.. TournamentSelection: implement
+    NextGeneration *-- SelectionBehaviour : has-a
+    NextGeneration *-- CrossoverBehaviour : has-a
+    NextGeneration *-- MutationBehaviour : has-a
+    MutationBehaviour <|.. RandomMutation : implement
+    CrossoverBehaviour <|.. HalfElementCrossover : implement
+    SelectionBehaviour <|.. TournamentSelection : implement
 
-    class GeneticAlgorithm {
-        -State idleState
-        -State processingState
-        -State completeState
-        -State state
-        +getState() State
-        +setState(State state) void
-        +nextStep() void
-        +getIdleState() State
-        +getProcessingState() State
-        +getCompleteStepState() State
+    namespace State Design Pattern {
+        class GeneticAlgorithm {
+        }
+
+        class State {
+            <<interface>>
+        }
+
+
+        class Idle {
+        }
+
+        class Complete {
+        }
     }
 
-    class State {
-        <<interface>>
-        +nextStep() void
-        +doEnterStep() void
-        +doExitStep() void
+%% Use inner class with Bill Pugh Method
+    namespace Singleton Design Pattern{
+        class GeneticAlgorithmManager {
+
+        }
     }
 
-    class Idle {
-        -GeneticAlgorithm geneticAlgortihm
-        +Idle(GeneticAlgorithm geneticAlgortihm)
-        +nextStep() void
-        +doEnterStep() void
-        +doExitStep() void
+    namespace Abstract Factory Design Pattern{
+        class GeneticAlgorithmFactory{
+
+        }
+
+        class KnapsackFactory{
+
+        }
+
+        class KSInitialPopulation{
+
+        }
+
+        class KSFitnessCalculation{
+
+        }
+
+        class KSNextGeneration{
+
+        }
+
+        class KSResultDetection{
+
+        }
+
+        class ResultDetection{
+            <<Abstract>>
+
+        }
+
+        class InitialPopulation{
+            <<Abstract>>
+
+        }
+
+        class FitnessCalculation{
+            <<Abstract>>
+
+        }
     }
 
-    class Processing {
-        -GeneticAlgorithm geneticAlgortihm
-        -GeneticAlgorithmManager geneticAlgorithmManager
-        +Processing(GeneticAlgorithm geneticAlgortihm, GeneticAlgorithmManager geneticAlgorithmManager)
-        +nextStep() void
-        +doEnterStep() void
-        +doExitStep() void
-    }
+    namespace Strategy Design Pattern {
+        class NextGeneration{
+            <<Abstract>>
 
-    class Complete {
-        -GeneticAlgorithm geneticAlgortihm
-        +Complete(GeneticAlgorithm geneticAlgortihm)
-        +nextStep() void
-        +doEnterStep() void
-        +doExitStep() void
-    }
+        }
 
-    class GeneticAlgorithmManager {
-        -GeneticAlgorithmManagerHelper geneticAlgorithmManagerHelper
-        -GeneticAlgorithmFactory geneticAlgorithmFactory
-        +getGeneticAlgorithmManager() GeneticAlgorithmManager$
-    }
+        class SelectionBehaviour{
+            <<interface>>
 
-    class GeneticAlgorithmFactory {
-        <<interface>>
-        +CreateInitialIndividual() InitialIndividual
-        +CreateFitnessCalculation() FitnessCalculation
-        +CreateNextGeneration() CreateNextGeneration()
-        +CreateResultDetection() ResultDetection
-    }
+        }
 
-    class KnapsackFactory {
-        +CreateInitialIndividual() InitialIndividual
-        +CreateFitnessCalculation() FitnessCalculation
-        +CreateNextGeneration() NextGeneration()
-        +CreateResultDetection() ResultDetection
-    }
+        class CrossoverBehaviour{
+            <<interface>>
 
-    class KSInitialPopulation {
-        +generateInitialPopulation() void
-    }
+        }
 
-    class KSFitnessCalculation {
-        +calculateFitness() void
-    }
+        class MutationBehaviour{
+            <<interface>>
 
-    class KSNextGeneration {
-        +generateNextgeneration()
-    }
+        }
 
-    class KSResultDetection {
-        +checkResult() void
-    }
+        class RandomMutation{
 
-    class ResultDetection {
-        <<Abstract>>
-        +checkResult() void*
-    }
+        }
 
-    class InitialPopulation {
-        <<Abstract>>
-        +generateInitialPopulation() void*
-    }
+        class HalfElementCrossover{
 
-    class FitnessCalculation {
-        <<Abstract>>
-        +calculateFitness() void*
-    }
+        }
 
-    class NextGeneration {
-        <<Abstract>>
-        -SelectionBehaviour selectionBehaviour
-        -CrossoverBehaviour crossoverBehaviour
-        -MutationBehaviour mutationBehaviour
-        +performSelection() void
-        +performCrossover() void
-        +performMutation() void
-        +setSelectionBehaviour(SelectionBehaviour selectionBehaviour) void
-        +setCrossoverBehaviour(CrossoverBehaviour crossoverBehaviour) void
-        +setMutationBehaviour(MutationBehaviour mutationBehaviour)
-        +generateNextgeneration()*
-    }
+        class TournamentSelection{
 
-    class SelectionBehaviour {
-        <<interface>>
-        +selection() void
+        }
     }
-
-    class CrossoverBehaviour {
-        <<interface>>
-        +crossover() void
-    }
-
-    class MutationBehaviour {
-        <<interface>>
-        +mutation() void
-    }
-
-    class RandomMutation {
-        +mutation() void
-    }
-
-    class HalfElementCrossover {
-        +crossover() void
-    }
-
-    class TournamentSelection {
-        +selection() void
-    }
-    
 ```
