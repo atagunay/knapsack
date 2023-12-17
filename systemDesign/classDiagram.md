@@ -25,16 +25,7 @@ classDiagram
     CrossoverBehaviour <|.. HalfElementCrossover: implement
     SelectionBehaviour <|.. TournamentSelection: implement
 
-    namespace State Design Pattern {
-        class GeneticAlgorithm
-        class Idle
-        class Complete
-
-        class State {
-            <<interface>>
-        }
-    }
-
+    
     namespace Singleton Design Pattern {
         class GeneticAlgorithmManager
     }
