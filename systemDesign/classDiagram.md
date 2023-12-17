@@ -26,44 +26,26 @@ classDiagram
     SelectionBehaviour <|.. TournamentSelection: implement
 
     namespace State Design Pattern {
-        class GeneticAlgorithm {
-        }
+        class GeneticAlgorithm
+        class Idle
+        class Complete
 
         class State {
             <<interface>>
         }
-
-        class Idle {
-        }
-
-        class Complete {
-        }
     }
 
-%% Use inner class with Bill Pugh Method
     namespace Singleton Design Pattern {
-        class GeneticAlgorithmManager {
-        }
+        class GeneticAlgorithmManager
     }
 
     namespace Abstract Factory Design Pattern {
-        class GeneticAlgorithmFactory {
-        }
-
-        class KnapsackFactory {
-        }
-
-        class KSInitialPopulation {
-        }
-
-        class KSFitnessCalculation {
-        }
-
-        class KSNextGeneration {
-        }
-
-        class KSResultDetection {
-        }
+        class GeneticAlgorithmFactory
+        class KnapsackFactory
+        class KSInitialPopulation
+        class KSFitnessCalculation
+        class KSNextGeneration
+        class KSResultDetection
 
         class ResultDetection {
             <<Abstract>>
@@ -95,13 +77,8 @@ classDiagram
             <<interface>>
         }
 
-        class RandomMutation {
-        }
-
-        class HalfElementCrossover {
-        }
-
-        class TournamentSelection {
-        }
+        class RandomMutation
+        class HalfElementCrossover
+        class TournamentSelection
     }
 ```
