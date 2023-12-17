@@ -109,7 +109,10 @@ classDiagram
   GeneticAlgorithmManager *-- GeneticAlgorithmFactory
   
     namespace Singleton Design Pattern {
-        class GeneticAlgorithmManager
+        class GeneticAlgorithmManager {
+            <<singleton>>
+            a()
+        }
     }
 ```
 
