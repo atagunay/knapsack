@@ -8,6 +8,8 @@ import java.util.Random;
  */
 public class RandomMutation implements MutationBehaviour {
     /**
+     * The mutation is an evolutionary operation that randomly mutates an individual.
+     *
      * @param children     the current children
      * @param mutationRate the mutation rate from Genetic Algorithm Setting Class
      * @return the new children

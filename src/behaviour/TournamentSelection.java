@@ -9,6 +9,9 @@ import java.util.List;
  */
 public class TournamentSelection implements SelectionBehaviour {
     /**
+     * One good selection criteria is Tournament Selection, which randomly picks two individuals and runs a virtual tournament.
+     * The one having the higher fitness coefficient wins.
+     *
      * @param population          the current population
      * @param fitnessOfPopulation the fitness scores of current population
      * @param <T>                 extends Number

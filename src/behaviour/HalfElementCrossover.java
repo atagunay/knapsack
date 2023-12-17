@@ -7,6 +7,8 @@ import java.util.List;
  */
 public class HalfElementCrossover implements CrossoverBehaviour {
     /**
+     * Crossover is an evolutionary operation between two individuals, and it generates children having some parts from each parent.
+     *
      * @param parents the parents of the current population
      * @return the new parents
      */
