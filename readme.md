@@ -105,15 +105,7 @@ Complete -> Idle
 
 ```mermaid
 classDiagram
-  Idle *-- GeneticAlgorithmManager
-  GeneticAlgorithmManager *-- GeneticAlgorithmFactory
-  
-    namespace Singleton Design Pattern {
-        class GeneticAlgorithmManager {
-            <<singleton>>
-            a()
-        }
-    }
+    Idle *-- GeneticAlgorithmManager : Singleton Class
 ```
 
  
