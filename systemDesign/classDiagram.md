@@ -7,7 +7,7 @@ classDiagram
     State <|.. Idle
     State <|.. Complete
     GeneticAlgorithm *-- State
-    Idle *-- GeneticAlgorithmManager
+    
     GeneticAlgorithmFactory <|.. KnapsackFactory: implement
     InitialPopulation <|-- KSInitialPopulation: extend
     FitnessCalculation <|-- KSFitnessCalculation: extend
@@ -26,7 +26,7 @@ classDiagram
     SelectionBehaviour <|.. TournamentSelection: implement
 
     
-    namespace Singleton Design Pattern {
-        class GeneticAlgorithmManager
-    }
+namespace Singleton Design Pattern {
+    class GeneticAlgorithmManager
+}
 ```
