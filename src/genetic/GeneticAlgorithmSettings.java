@@ -1,5 +1,8 @@
 package genetic;
 
+/**
+ * settings class for Genetic Algorithm process
+ */
 public class GeneticAlgorithmSettings {
     public static double REPRODUCTION_RATE = 0.25;
     public static double CROSSOVER_RATE = 0.50;

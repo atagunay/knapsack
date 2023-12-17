@@ -6,6 +6,9 @@ import behaviour.TournamentSelection;
 
 import java.util.List;
 
+/**
+ * singleton class
+ */
 public class GeneticAlgorithmManager {
 
     private static InitialPopulation initialPopulation;
@@ -40,7 +43,10 @@ public class GeneticAlgorithmManager {
         return GeneticAlgorithmManagerHelper.INSTANCE;
     }
 
-    public String runGeneticAlgorithm() {
+    /**
+     * Main process for Genetic Algorithm
+     */
+    public void runGeneticAlgorithm() {
         List<List<Integer>> population = null;
         List<Integer> fitnessOfPopulation = null;
         List<List<Integer>> nextPopulation = null;
@@ -51,7 +57,7 @@ public class GeneticAlgorithmManager {
             nextPopulation = nextGeneration.generateNextGeneration(population, fitnessOfPopulation);
         }
 
-        return resultDetection.detectResult(nextPopulation, fitnessOfPopulation);
+        resultDetection.detectResult(nextPopulation, fitnessOfPopulation);
     }
 
     /**

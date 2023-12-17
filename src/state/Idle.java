@@ -27,9 +27,7 @@ public class Idle implements State {
      */
     @Override
     public void nextStep() {
-        String result = geneticAlgorithmManager.runGeneticAlgorithm();
-        System.out.println(result);
-
+        geneticAlgorithmManager.runGeneticAlgorithm();
         geneticAlgorithm.setState(geneticAlgorithm.getCompleteState());
         System.out.println("Idle -> Complete");
     }

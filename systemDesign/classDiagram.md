@@ -7,7 +7,7 @@ classDiagram
     State <|.. Idle
     State <|.. Complete
     GeneticAlgorithm *-- State
-    
+    Idle *-- GeneticAlgorithmManager
     GeneticAlgorithmFactory <|.. KnapsackFactory: implement
     InitialPopulation <|-- KSInitialPopulation: extend
     FitnessCalculation <|-- KSFitnessCalculation: extend
@@ -25,8 +25,66 @@ classDiagram
     CrossoverBehaviour <|.. HalfElementCrossover: implement
     SelectionBehaviour <|.. TournamentSelection: implement
 
-    
-namespace Singleton Design Pattern {
-    class GeneticAlgorithmManager
-}
+    namespace State Design Pattern {
+        class GeneticAlgorithm
+        class Idle
+        class Complete
+        
+        class State {
+            <<interface>>
+        }
+    }
+
+%% Use inner class with Bill Pugh Method
+    namespace Singleton Design Pattern {
+        class GeneticAlgorithmManager
+    }
+
+    namespace Abstract Factory Design Pattern {
+        class GeneticAlgorithmFactory
+        class KnapsackFactory
+        class KSInitialPopulation
+        class KSFitnessCalculation
+        class KSNextGeneration
+        class KSResultDetection
+
+        class ResultDetection {
+            <<Abstract>>
+        }
+
+        class InitialPopulation {
+            <<Abstract>>
+        }
+
+        class FitnessCalculation {
+            <<Abstract>>
+        }
+    }
+
+    namespace Strategy Design Pattern {
+        class NextGeneration {
+            <<Abstract>>
+        }
+
+        class SelectionBehaviour {
+            <<interface>>
+        }
+
+        class CrossoverBehaviour {
+            <<interface>>
+        }
+
+        class MutationBehaviour {
+            <<interface>>
+        }
+
+        class RandomMutation {
+        }
+
+        class HalfElementCrossover 
+        
+
+        class TournamentSelection 
+        
+    }
 ```

@@ -1,5 +1,8 @@
 package genetic;
 
+/**
+ * abstract factory
+ */
 public interface GeneticAlgorithmFactory {
     /**
      *

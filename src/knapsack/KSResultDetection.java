@@ -1,5 +1,6 @@
 package knapsack;
 
+import core.ResultPresentation;
 import genetic.ResultDetection;
 
 import java.lang.reflect.Array;
@@ -24,16 +25,15 @@ public class KSResultDetection extends ResultDetection {
         return true;
     }
 
+
     /**
      * @param population current population
      * @param fitness    fitness scores of current population
-     * @return optimum solution as String
      */
     @Override
-    public String detectResult(List<List<Integer>> population, List<Integer> fitness) {
+    public void detectResult(List<List<Integer>> population, List<Integer> fitness) {
         int max = 0;
         int maxIndex = 0;
-        String result = "";
 
         for (int i = 0; i < fitness.size(); i++) {
             if (fitness.get(i) > max) {
@@ -42,6 +42,7 @@ public class KSResultDetection extends ResultDetection {
             }
         }
 
-        return population.get(maxIndex).toString();
+        ResultPresentation<List<Integer>> resultPresentation = new ResultPresentation<>(population.get(maxIndex));
+        resultPresentation.prettyPrint();
     }
 }

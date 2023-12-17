@@ -103,9 +103,6 @@ Complete -> Idle
 
 ## Singleton Pattern
 
-```mermaid
-classDiagram
-    Idle *-- GeneticAlgorithmManager : Singleton Class
-```
+
 
  

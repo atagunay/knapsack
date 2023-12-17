@@ -4,8 +4,12 @@ import knapsack.KSFactory;
 import state.Complete;
 import state.Idle;
 import state.State;
+
 import java.util.Map;
 
+/**
+ * state machine
+ */
 public class GeneticAlgorithm {
     private State state;
     final private State idleState;
@@ -18,7 +22,6 @@ public class GeneticAlgorithm {
     private final String factoryKey;
 
     /**
-     *
      * @param factoryKey the key for factory selection, eg: "knapsack" calls KSFactory
      */
     public GeneticAlgorithm(String factoryKey) {

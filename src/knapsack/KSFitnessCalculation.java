@@ -23,11 +23,11 @@ public class KSFitnessCalculation extends FitnessCalculation {
             int totalValue = 0;
 
 
-            totalWeight = population.get(i).get(0) * 7 + population.get(i).get(1) * 2 +
-                    population.get(i).get(2) * 1 + population.get(i).get(3) * 9;
+            totalWeight = population.get(i).get(0) * KnapsackSettings.WEIGHT1 + population.get(i).get(1) * KnapsackSettings.WEIGHT2 +
+                    population.get(i).get(2) * KnapsackSettings.WEIGHT3 + population.get(i).get(3) * KnapsackSettings.WEIGHT4;
 
-            totalValue = population.get(i).get(0) * 5 + population.get(i).get(1) * 4 +
-                    population.get(i).get(2) * 7 + population.get(i).get(3) * 2;
+            totalValue = population.get(i).get(0) * KnapsackSettings.VALUE1 + population.get(i).get(1) * KnapsackSettings.VALUE2 +
+                    population.get(i).get(2) * KnapsackSettings.VALUE3 + population.get(i).get(3) * KnapsackSettings.VALUE4;
 
             if (totalWeight < 15) {
                 fitness.add(totalValue);
