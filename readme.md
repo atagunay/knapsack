@@ -101,8 +101,74 @@ Idle -> Complete
 Complete -> Idle
 ```
 
+## State Pattern
+1. A Genetic Algorithm process may have some states like idle and complete to inform the client developer
+
+Document Links:
+* [State Package](https://atagunay.github.io/knapsack/doc/state/package-summary.html)
+
+```mermaid
+classDiagram
+    GeneticAlgorithm *-- State
+  State <|.. Idle
+  State <|.. Complete
+```
+
 ## Singleton Pattern
 
+1. GeneticAlgorithmManager class can be used by the different classes or threads to manage the Genetic Algorithm process
+2. Creating new instances of GeneticAlgorithmManager for every new Genetic Algortihm will be redundant. For this reason, 
+Singleton Pattern is used here
 
+Document Links:
+* [Singleton Class](https://atagunay.github.io/knapsack/doc/genetic/GeneticAlgorithmManager.html)
+
+```mermaid
+classDiagram
+    Idle *-- GeneticAlgorithmManager
+```
+
+## Strategy Pattern
+
+1. Next generation process has some behaviours/algorithms like mutation, crossover, selection
+2. These algorithms can be changed on runtime
+3. We may want to use different algorithms inside the next generation process. For this reason Strategy Pattern is used here
+
+Document Links:
+* [NextGeneration Class](https://atagunay.github.io/knapsack/doc/genetic/NextGeneration.html)
+* [Behaviour Package](https://atagunay.github.io/knapsack/doc/behaviour/package-summary.html)
+
+```mermaid
+classDiagram
+    NextGeneration *-- SelectionBehaviour: has-a
+    NextGeneration *-- CrossoverBehaviour: has-a
+    NextGeneration *-- MutationBehaviour: has-a
+    MutationBehaviour <|.. RandomMutation: implement
+    CrossoverBehaviour <|.. HalfElementCrossover: implement
+    SelectionBehaviour <|.. TournamentSelection: implement
+```
+
+## Abstract Factory Pattern
+
+1. Genetic Algorithm factory may create different families like knapsack family or travelling salesman family
+2. Each family should have some products like selection, crossover and mutation. For this reason, 
+Abstract Factory Pattern is used here
+
+Document Links:
+* [Concrete Factory and Products](https://atagunay.github.io/knapsack/doc/knapsack/package-summary.html)
+* [Abstract Factory and Products](https://atagunay.github.io/knapsack/doc/genetic/package-summary.html)
+
+```mermaid
+classDiagram
+    GeneticAlgorithmFactory <|.. KnapsackFactory: implement
+    KSInitialPopulation <.. KnapsackFactory: create
+    KSFitnessCalculation <.. KnapsackFactory: create
+    KSResultDetection <.. KnapsackFactory: create
+    KSNextGeneration <.. KnapsackFactory: create
+    InitialPopulation <|-- KSInitialPopulation: extend
+    FitnessCalculation <|-- KSFitnessCalculation: extend
+    NextGeneration <|-- KSNextGeneration: extend
+    ResultDetection <|-- KSResultDetection: extend
+```
 
  
