@@ -7,7 +7,6 @@ Abstract Factory design patterns
 
 * [1. Problem Explanation](systemDesign/knapsack.md)
 * [2. Rough Drawing](https://miro.com/app/board/uXjVNGdVCg4=/?share_link_id=657114321129)
-* [3. Class Diagram](systemDesign/classDiagram.md)
 
 ## JavaDoc
 
